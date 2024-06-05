@@ -9,10 +9,12 @@ def main():
         sys.stdout.flush()
 
         # Get user input
-        command = input()
-        match command:
-            case "exit 0":
-                break
+        args = input().split(" ")
+        match command := args.pop(0):
+            case "exit" if args[0] == 0:
+                sys.exit(0)
+            case "echo":
+                print(" ".join(args))
             case _:
                 sys.stdout.write(f"{command}: command not found\n")
         continue
