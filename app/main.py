@@ -28,7 +28,7 @@ def main():
                 if args[0] in builtin_commands:
                     sys.stdout.write("is a shell builtin\n")
                 elif command_path:
-                    sys.stdout.write(f"is {command_path}/{args[0]}")
+                    sys.stdout.write(f"is {command_path}/{args[0]}\n")
                 else:
                     sys.stdout.write("not found\n")
             case _:
