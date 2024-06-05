@@ -11,7 +11,7 @@ def main():
         # Get user input
         args = input().split(" ")
         match command := args.pop(0):
-            case "exit" if args[1] == 0:
+            case "exit" if args[0] == "0":
                 sys.exit(0)
             case "echo":
                 print(" ".join(args))
