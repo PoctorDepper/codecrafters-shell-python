@@ -32,6 +32,8 @@ def main():
                     print(f"is {path}/{command}")
                 else:
                     print("not found")
+            case ["pwd"]:
+                print(os.getcwd())
             case _:
                 if find_executable(user_input[0]):
                     os.system(" ".join(user_input))
