@@ -2,7 +2,7 @@ import sys
 import os
 
 paths = os.environ.get("PATH").split(":")
-builtin_commands = ["exit", "echo", "type"]
+builtin_commands = ["exit", "echo", "type", "pwd"]
 
 def find_executable(command):
     for path in paths:
