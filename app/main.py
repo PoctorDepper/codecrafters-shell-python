@@ -23,7 +23,7 @@ def main():
             case ["exit", "0"]:
                 sys.exit(0)
             case ["echo", *text]:
-                print(text)
+                print(*text)
             case ["type", *args]:
                 sys.stdout.write(f"{args[0]} ")
                 if args[0] in builtin_commands:
