@@ -24,12 +24,12 @@ def main():
                 sys.exit(0)
             case ["echo", *text]:
                 print(*text)
-            case ["type", *args]:
-                sys.stdout.write(f"{args[0]} ")
-                if args[0] in builtin_commands:
+            case ["type", command]:
+                sys.stdout.write(f"{command} ")
+                if command in builtin_commands:
                     print("is a shell builtin")
-                elif path := find_executable(args[0]):
-                    print(f"is {path}/{args[0]}")
+                elif path := find_executable(command):
+                    print(f"is {path}/{command}")
                 else:
                     print("not found")
             case _:
