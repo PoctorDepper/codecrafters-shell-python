@@ -18,14 +18,13 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
 
-        # Get user input
-        args = input().split()
-        match command := args.pop(0):
-            case "exit" if args[0] == "0":
+        # Take user input
+        match user_input := input().split():
+            case ["exit", "0"]:
                 sys.exit(0)
-            case "echo":
-                print(*args)
-            case "type":
+            case ["echo", *text]:
+                print(text)
+            case ["type", *args]:
                 sys.stdout.write(f"{args[0]} ")
                 if args[0] in builtin_commands:
                     sys.stdout.write("is a shell builtin\n")
@@ -34,12 +33,11 @@ def main():
                 else:
                     sys.stdout.write("not found\n")
             case _:
-                if find_executable(command):
-                    os.system(f"{command} {" ".join(args)}")
+                if find_executable(user_input[0]):
+                    os.system(" ".join(user_input))
                 else:
                     sys.stdout.write(f"{command}: command not found\n")
         continue
-
 
 
 if __name__ == "__main__":
