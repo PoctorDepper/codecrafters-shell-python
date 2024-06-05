@@ -12,7 +12,6 @@ def find_executable(command):
 
 
 def main():
-    populate_path_commands()
     while True:
         # Clear terminal
         sys.stdout.write("$ ")
