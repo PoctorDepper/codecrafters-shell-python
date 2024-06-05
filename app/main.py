@@ -12,6 +12,7 @@ def find_executable(command):
 
 
 def main():
+
     while True:
         # Clear terminal
         sys.stdout.write("$ ")
@@ -34,7 +35,7 @@ def main():
                     sys.stdout.write("not found\n")
             case _:
                 if find_executable(command):
-                    os.system(command *args)
+                    os.system(f"{command} {" ".join(args)}")
                 else:
                     sys.stdout.write(f"{command}: command not found\n")
         continue
