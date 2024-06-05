@@ -1,11 +1,18 @@
 import sys
 import os
 
-builtin_commands = ["exit", "echo", "type"]
 paths = os.environ.get("PATH").split(":")
+builtin_commands = ["exit", "echo", "type"]
+
+def find_executable(command):
+    for path in paths:
+        if os.path.isfile(f"{path}/{command}"):
+            return path
+    return None
+
 
 def main():
-
+    populate_path_commands()
     while True:
         # Clear terminal
         sys.stdout.write("$ ")
@@ -19,20 +26,18 @@ def main():
             case "echo":
                 print(*args)
             case "type":
-                command_path = None
-                for path in paths:
-                    if os.path.isfile(f"{path}/{args[0]}"):
-                        command_path = path
-                        break
                 sys.stdout.write(f"{args[0]} ")
                 if args[0] in builtin_commands:
                     sys.stdout.write("is a shell builtin\n")
-                elif command_path:
-                    sys.stdout.write(f"is {command_path}/{args[0]}\n")
+                elif path := find_executable(args[0]):
+                    sys.stdout.write(f"is {path}/{args[0]}\n")
                 else:
                     sys.stdout.write("not found\n")
             case _:
-                sys.stdout.write(f"{command}: command not found\n")
+                if find_executable(command):
+                    os.system(command *args)
+                else:
+                    sys.stdout.write(f"{command}: command not found\n")
         continue
 
 
