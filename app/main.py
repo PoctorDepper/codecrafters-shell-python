@@ -27,16 +27,16 @@ def main():
             case ["type", *args]:
                 sys.stdout.write(f"{args[0]} ")
                 if args[0] in builtin_commands:
-                    sys.stdout.write("is a shell builtin\n")
+                    print("is a shell builtin")
                 elif path := find_executable(args[0]):
-                    sys.stdout.write(f"is {path}/{args[0]}\n")
+                    print(f"is {path}/{args[0]}")
                 else:
-                    sys.stdout.write("not found\n")
+                    print("not found")
             case _:
                 if find_executable(user_input[0]):
                     os.system(" ".join(user_input))
                 else:
-                    sys.stdout.write(f"{command}: command not found\n")
+                    print(f"{user_input[0]}: command not found")
         continue
 
 
