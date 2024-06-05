@@ -14,7 +14,7 @@ def main():
             case "exit" if args[0] == "0":
                 sys.exit(0)
             case "echo":
-                print(args[0:])
+                print(*args[0:])
             case _:
                 sys.stdout.write(f"{command}: command not found\n")
         continue
