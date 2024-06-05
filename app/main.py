@@ -10,7 +10,11 @@ def main():
 
         # Get user input
         command = input()
-        sys.stdout.write(f"{command}: command not found\n")
+        match command:
+            case "exit 0":
+                break
+            case _:
+                sys.stdout.write(f"{command}: command not found\n")
         continue
 
 
