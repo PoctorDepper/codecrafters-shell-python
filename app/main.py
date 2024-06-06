@@ -11,8 +11,8 @@ def find_executable(command):
     return None
 
 
-def handle_input(user_input):
-    match user_input.split():
+def handle_input(line):
+    match user_input := line.split():
         case ["exit", "0"]:
             sys.exit(0)
         case ["echo", *text]:
