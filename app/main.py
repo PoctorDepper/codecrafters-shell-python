@@ -28,7 +28,7 @@ def handle_input(line):
         case ["pwd"]:
             print(os.getcwd())
         case ["cd", dir]:
-            dir.replace("~", os.environ.get("HOME"))
+            dir = dir.replace("~", os.environ.get("HOME"))
             if os.path.isdir(dir):
                 os.chdir(dir)
             else:
