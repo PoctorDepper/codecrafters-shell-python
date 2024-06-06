@@ -38,8 +38,8 @@ def handle_input(line):
             else:
                 print(f"{user_input[0]}: command not found")
 
-def main():
 
+def main():
     while True:
         # Clear terminal
         sys.stdout.write("$ ")
